@@ -1,13 +1,13 @@
-package com.cchaparro.ms.sFilas;
+package com.sfilas.mspedidosfilas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MsSFilasApplication {
+public class MsPedidoSfilasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsSFilasApplication.class, args);
+		SpringApplication.run(MsPedidoSfilasApplication.class, args);
 	}
 
 }
