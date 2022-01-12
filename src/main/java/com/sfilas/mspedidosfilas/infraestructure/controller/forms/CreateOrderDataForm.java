@@ -2,8 +2,7 @@ package com.sfilas.mspedidosfilas.infraestructure.controller.forms;
 
 import java.util.Calendar;
 
-
-import com.sfilas.mspedidosfilas.domain.Order;
+import com.sfilas.mspedidosfilas.models.entity.Request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +15,9 @@ public class CreateOrderDataForm {
     private Long value;
     private String state;
 
-    public Order toCrearPedidoDataForm() {
+    public Request toCrearPedidoDataForm() {
 
-        return new Order(registDate, value, state);
+        return new Request(registDate, value, state);
     }
 
 }

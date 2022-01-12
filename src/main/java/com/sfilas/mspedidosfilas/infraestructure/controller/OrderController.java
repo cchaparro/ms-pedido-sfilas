@@ -2,7 +2,7 @@ package com.sfilas.mspedidosfilas.infraestructure.controller;
 
 import java.util.List;
 
-import com.sfilas.mspedidosfilas.domain.Order;
+import com.sfilas.mspedidosfilas.models.entity.Request;
 import com.sfilas.mspedidosfilas.use_case.CreateOrder;
 import com.sfilas.mspedidosfilas.use_case.GetAllOrder;
 
@@ -27,17 +27,17 @@ public class OrderController {
     private final GetAllOrder getAllOrder;
 
     @GetMapping(value = "/all")
-    public List<Order> getAll() {
+    public List<Request> getAll() {
         return getAllOrder.getAllOder();
     }
 
     @ApiOperation(value = "Acá nombramos la operación", notes = "Podemos incluir una descripción más detallada que será útil al cliente")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK. El recurso se obtiene correctamente", response = Order.class),
-            @ApiResponse(code = 400, message = "Bad Request.Esta vez cambiamos el tipo de dato de la respuesta (String)", response = Order.class),
+            @ApiResponse(code = 200, message = "OK. El recurso se obtiene correctamente", response = Request.class),
+            @ApiResponse(code = 400, message = "Bad Request.Esta vez cambiamos el tipo de dato de la respuesta (String)", response = Request.class),
             @ApiResponse(code = 500, message = "Error inesperado del") })
     @PostMapping(value = "/create")
-    public Order createAccount(@RequestBody Order order) {
+    public Request createAccount(@RequestBody Request order) {
         return createOrder.createOrder(order);
     }
 
