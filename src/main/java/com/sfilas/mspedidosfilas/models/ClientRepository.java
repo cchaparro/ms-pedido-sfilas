@@ -8,4 +8,6 @@ public interface ClientRepository {
 
     public List<Client> findAll();
 
+    public Client save(Client client);
+
 }

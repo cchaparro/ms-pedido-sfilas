@@ -1,7 +1,10 @@
 package com.sfilas.mspedidosfilas.infraestructure.controller.forms;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,10 +13,11 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice(basePackages = "com.sfilas.mspedidosfilas")
+@ControllerAdvice(basePackages = "com.sfilas.mspedidosfilas.infraestructure.controller")
 public class CustomErrorHandler extends ResponseEntityExceptionHandler {
 
     @Override
@@ -31,10 +35,19 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
         }
 
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), errors);
-        return handleExceptionInternal(ex, apiError, headers, apiError.getStatus(), request);
+        
+        return new ResponseEntity<Object>(
+                apiError, new HttpHeaders(), apiError.getStatus());
 
-        // If you want to throw apiError directly, uncomment this
-        // return new ResponseEntity(apiError, apiError.getStatus());
+    }
+
+    @ExceptionHandler({ SQLIntegrityConstraintViolationException.class })
+    public ResponseEntity<Object> handleConstraintViolation(
+            SQLIntegrityConstraintViolationException ex, WebRequest request) {
+
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), ex.getMessage());
+        return new ResponseEntity<Object>(
+                apiError, new HttpHeaders(), apiError.getStatus());
     }
 
 }

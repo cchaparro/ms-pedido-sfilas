@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -29,13 +30,17 @@ public class Client {
     @Column(unique = true)
     private String telephone;
 
+    @Email
+    @NotEmpty
     @NotNull
     private String mail;
 
     @NotEmpty
+    @NotNull
     private String name;
 
     @NotEmpty
+    @NotNull
     @Column(name = "last_name")
     private String lastName;
 

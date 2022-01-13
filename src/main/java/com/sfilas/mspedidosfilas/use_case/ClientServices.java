@@ -21,4 +21,9 @@ public class ClientServices {
         return clienteDAO.findAll();
     }
 
+    public Client save(Client client) {
+
+        return clienteDAO.save(client);
+    }
+
 }
