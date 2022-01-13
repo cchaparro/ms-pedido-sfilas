@@ -4,7 +4,6 @@ spring:
     username: root
     password: layla34*
   jpa:
-    hibernate.ddl-auto: create-drop
-    generate-ddl: true
+    hibernate.ddl-auto: create
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

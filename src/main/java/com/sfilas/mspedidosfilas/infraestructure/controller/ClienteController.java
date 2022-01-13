@@ -6,11 +6,14 @@ import java.util.List;
 import com.sfilas.mspedidosfilas.infraestructure.db.entity.Client;
 import com.sfilas.mspedidosfilas.use_case.ClientServices;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -18,7 +21,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping(value = "/api/client")
-public class ClienteController {
+public class ClienteController extends ResponseEntityExceptionHandler {
 
     private final ClientServices clientServices;
 
@@ -33,8 +36,8 @@ public class ClienteController {
             @ApiResponse(code = 500, message = "Error inesperado del") })
     @GetMapping(value = "/get-all")
 
-    List<Client> createAccount() {
-        return clientServices.getAllClient();
+    ResponseEntity<List<Client>> createAccount() {
+        return new ResponseEntity<>(clientServices.getAllClient(), HttpStatus.OK);
     }
 
 }
