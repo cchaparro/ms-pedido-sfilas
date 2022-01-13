@@ -1,4 +1,4 @@
-package com.sfilas.mspedidosfilas.models.entity;
+package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
 import java.util.Calendar;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,24 +30,14 @@ public class Request {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar registDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Product product;
-
     @Column
     private Long value;
     @Column
     private String state;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_request_id")
+    @JoinColumn(name = "requests_id")
     List<ItemRequest> listItemsRequests;
-
-    public Request(Calendar registDate, Long value, String state) {
-
-        this.registDate = registDate;
-        this.value = value;
-        this.state = state;
-    }
 
     public void addItemRequest(ItemRequest itemRequest) {
 

@@ -1,20 +1,20 @@
-package com.sfilas.mspedidosfilas.models.entity;
+package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "items_requests")
-@Entity
 @Getter
 @Setter
+@Table(name = "items_requests")
+@Entity
 public class ItemRequest {
 
      @Id
@@ -22,5 +22,8 @@ public class ItemRequest {
      private Long id;
 
      private Integer amount;
+
+     @ManyToOne(fetch = FetchType.LAZY)
+     private Product product;
 
 }

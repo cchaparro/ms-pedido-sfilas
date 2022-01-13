@@ -1,4 +1,4 @@
-package com.sfilas.mspedidosfilas.models.entity;
+package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,8 +27,11 @@ public class Queue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    private String description;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "request_id")
+    @JoinColumn(name = "queues_id")
     List<Request> listIRequest;
 
     @ManyToOne(fetch = FetchType.LAZY)

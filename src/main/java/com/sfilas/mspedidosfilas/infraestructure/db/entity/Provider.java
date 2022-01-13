@@ -1,4 +1,4 @@
-package com.sfilas.mspedidosfilas.models.entity;
+package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class Provider {
 
     @NotNull
     @Email
-    private String email;
+    private String mail;
 
     @OneToMany(mappedBy = "provider", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Queue> listQueue;
