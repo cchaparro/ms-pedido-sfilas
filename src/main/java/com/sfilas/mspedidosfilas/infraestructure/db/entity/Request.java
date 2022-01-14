@@ -1,5 +1,6 @@
 package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity(name = "requests")
-public class Request {
+public class Request implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,5 +44,7 @@ public class Request {
 
         listItemsRequests.add(itemRequest);
     }
+
+    private static final long serialVersionUID = 1L;
 
 }

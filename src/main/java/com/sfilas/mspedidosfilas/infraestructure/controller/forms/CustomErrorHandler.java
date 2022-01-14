@@ -4,8 +4,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +33,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
         }
 
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), errors);
-        
+
         return new ResponseEntity<Object>(
                 apiError, new HttpHeaders(), apiError.getStatus());
 

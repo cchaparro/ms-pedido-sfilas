@@ -10,3 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface IClienteDAO extends CrudRepository<Client, Long>, ClientRepository {
 
 }
+ 

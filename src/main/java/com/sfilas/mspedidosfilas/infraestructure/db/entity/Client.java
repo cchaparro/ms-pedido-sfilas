@@ -1,5 +1,7 @@
 package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Client {
+public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,5 +45,7 @@ public class Client {
     @NotNull
     @Column(name = "last_name")
     private String lastName;
+
+    private static final long serialVersionUID = 1L;
 
 }

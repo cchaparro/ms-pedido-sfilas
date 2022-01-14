@@ -1,5 +1,7 @@
 package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "items_requests")
 @Entity
-public class ItemRequest {
+public class ItemRequest implements Serializable {
 
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +27,6 @@ public class ItemRequest {
 
      @ManyToOne(fetch = FetchType.LAZY)
      private Product product;
+     private static final long serialVersionUID = 1L;
 
 }

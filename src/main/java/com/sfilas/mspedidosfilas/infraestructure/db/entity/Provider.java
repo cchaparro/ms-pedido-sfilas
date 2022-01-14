@@ -1,5 +1,6 @@
 package com.sfilas.mspedidosfilas.infraestructure.db.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Provider {
+public class Provider implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +42,7 @@ public class Provider {
 
     @OneToMany(mappedBy = "provider", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Queue> listQueue;
+
+    private static final long serialVersionUID = 1L;
 
 }
